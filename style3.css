@@ -1,0 +1,263 @@
+/* General Reset */
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body and General Styling */
+body {
+    font-family: 'Roboto', sans-serif;
+    background: rgb(2, 0, 36);
+    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(144, 42, 158, 1) 58%, rgba(0, 212, 255, 1) 95%);
+    color: white;
+    line-height: 1.6;
+}
+
+/* Navigation Styling */
+nav {
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+nav .logo h1 {
+    font-size: 24px;
+    color: #fff;
+}
+
+.nav-links {
+    list-style-type: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.nav-links a:hover {
+    color: #ffcc00;
+}
+
+/* Section Styling */
+.section {
+    padding: 60px 20px;
+    margin-top: 80px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+/* Countdown Styling */
+.countdown {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 40px;
+    color: white;
+}
+
+#timer {
+    font-size: 3rem;
+    font-weight: bold;
+    animation: countdownAnim 2s ease-out;
+}
+
+@keyframes countdownAnim {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Home Section Styling */
+.home {
+    position: relative;
+    text-align: center;
+    padding: 80px 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    margin-top: 80px;
+}
+
+.home-content h2 {
+    font-size: 3rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: #ffcc00;
+    margin-bottom: 20px;
+}
+
+.home-content p {
+    font-size: 1.5rem;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.cta-button {
+    background-color: #ffcc00;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    color: #333;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #e6b800;
+    transform: scale(1.05);
+}
+
+/* Centered Image for Time Travel Event */
+.image-container {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.image-container img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Adding an Animated Horizontal Line at the End of Each Section */
+.animated-hr {
+    width: 80%;
+    margin: 40px auto;
+    border: 0;
+    border-top: 3px solid #ffcc00;
+    position: relative;
+    /* animation: hrAnimation 1.5s ease-out; */
+    animation: lineAnimation 1.2s ease-in-out infinite;
+}
+
+@keyframes hrAnimation {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 80%;
+    }
+}
+
+/* Box Styling for Sections */
+.box {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 30px;
+}
+
+.box h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.event-schedule ul {
+    list-style: none;
+    padding: 0;
+    font-size: 1rem;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #222;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+footer a {
+    color: #ffcc00;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+footer a:hover {
+    color: white;
+}
+#map-container {
+    width: 100%;
+    height: 400px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+hr{
+    animation: lineAnimation 2s ease-in-out infinite;
+}
+@keyframes lineAnimation {
+    0% {
+        width: 0;
+        transform: scaleX(0);
+    }
+    50% {
+        width: 100%;
+        transform: scaleX(1);
+    }
+    100% {
+        width: 0;
+        transform: scaleX(0);
+    }
+}
+.slider-container {
+    width: 650px; /* Adjust width */
+    overflow: hidden;
+}
+
+.slider {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.slides {
+    display: flex;
+    gap: 20px; /* Space between images */
+    animation: slide 160s linear infinite; /* Adjust speed */
+}
+
+.slides img {
+    width: 600px;  /* Adjust image size */
+    height: 400px; /* Adjust height */
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Keyframe Animation for Infinite Sliding */
+@keyframes slide {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-620px); } /* Image width + gap */
+    50% { transform: translateX(-1240px); }
+    75% { transform: translateX(-1860px); }
+    100% { transform: translateX(0); } 
+}
