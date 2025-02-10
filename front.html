@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <section id="auth">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            
+            <button type="submit">Login</button>
+        </form>
+        <p id="authMessage"></p>
+        <hr>
+        <h3>New User? Register Here</h3>
+        <form id="registerForm">
+            <label for="regEmail">Email:</label>
+            <input type="email" id="regEmail" name="regEmail" required>
+            
+            <label for="regPassword">Password:</label>
+            <input type="password" id="regPassword" name="regPassword" required>
+            
+            <button type="submit">Register</button>
+        </form>
+    </section>
+    <script type="module">
+        // Import the Firebase SDKs
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.0/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.3.0/firebase-auth.js";
+    
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyAdPTrxyMoX3pxn2OP1qkm_680fZG9Zy68",
+            authDomain: "backend-80297.firebaseapp.com",
+            projectId: "backend-80297",
+            storageBucket: "backend-80297.firebasestorage.app",
+            messagingSenderId: "374132200835",
+            appId: "1:374132200835:web:bb9f637111bf493bf4d2b6",
+            measurementId: "G-97NJLGX6VQ"
+        };
+    
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+    
+        // ✅ Register New User
+        document.getElementById("registerForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent form from refreshing the page
+    
+            // Get form values
+            const email = document.getElementById("regEmail").value;
+            const password = document.getElementById("regPassword").value;
+    
+            // Firebase authentication - Create user
+            createUserWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    alert("Registration Successful!");
+                    console.log("User registered:", userCredential.user);
+                    document.getElementById("authMessage").innerText = "User Registered: " + userCredential.user.email;
+                })
+                .catch((error) => {
+                    alert("Error: " + error.message);
+                    console.error("Registration Error:", error);
+                });
+        });
+    
+        // ✅ Login Existing User
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+    
+            // Get form values
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+    
+            // Firebase authentication - Login user
+            signInWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    alert("Login Successful!");
+                    console.log("User logged in:", userCredential.user);
+                    document.getElementById("authMessage").innerText = "Welcome, " + userCredential.user.email;
+                })
+                .catch((error) => {
+                    alert("Error: " + error.message);
+                    console.error("Login Error:", error);
+                });
+        });
+    
+        // ✅ Listen for Authentication State Changes
+        // onAuthStateChanged(auth, (user) => {
+        //     if (user) {
+        //         document.getElementById("authMessage").innerText = "Logged in as: " + user.email;
+        //     } else {
+        //         document.getElementById("authMessage").innerText = "Not logged in";
+        //     }
+        // });
+    
+    </script>    
+</body>
+</html>
